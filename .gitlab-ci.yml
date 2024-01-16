@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - ci/build_script.sh
+
+test:
+  stage: test
+  script:
+    - ci/test_script.sh
+  artifacts:
+    paths:
+      - binaries/
+      - test-reports/
+
+deploy:
+  stage: deploy
+  script:
+    - ci/deploy_script.sh
